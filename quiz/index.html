@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Halloween Quiz</title>
+<style>
+body {
+background-color: black;
+font-family: Helvetica;
+}
+
+#main {
+width: 80%;
+max-width: 950px;
+border: 1px gray solid;
+margin: auto;
+padding: 10px;
+background-color: white;
+border-radius: 10px;
+}
+
+#header {
+margin-top: 0;
+border: 2px solid black;
+padding: 5px;
+height: 350px;
+background: beige;
+background-image: url("jack.jpg");
+color: white;
+}
+
+label {
+display: block;
+}
+
+input {
+width: 30px;
+margin-left: 20px;
+}
+
+button {
+width: 100px;
+margin-top: 20px;
+}
+
+
+
+</style>
+
+</head>
+<body>
+<div id="main"><!-- open main div -->
+<div id="header"><!-- open header div -->
+<h1>Halloween Quiz</h1>
+</div><!-- close header div -->
+
+<h1>Halloween Quiz</h1>
+<form id="form1">
+
+<h2>Which vegetable was originally used to make jack o'lanterns?</h2>
+<label for="var_string"><input type="radio" name="variable" value="0" id="var_string" />Spinach</label>
+<label for="var_join"><input type="radio" name="variable" value="0" id="var_join" />Celery</label>
+<label for="var_info"><input type="radio" name="variable" value="0" id="var_info" />Peppers</label>
+<label for="var_condition"><input type="radio" name="variable" value="25" id="var_condition"/>Turnips</label>
+
+<h2>Which animals are most commonly associated with witches?</h2>
+<label for="sub_string"><input type="radio" name="sub" value="25" id="sub_string"/>Black Cats</label>
+<label for="sub_join"><input type="radio" name="sub" value="0" id="sub_join"/>Red Pandas</label>
+<label for="sub_info"><input type="radio" name="sub" value="0" id="sub_info" />Green Frogs</label>
+<label for="sub_condition"><input type="radio" name="sub" value="0" id="sub_condition" />Goats</label>
+
+<h2>Most haunted city in the US?</h2>
+<label for="cat_string"><input type="radio" name="con" value="25" id="cat_string" />Savannah, Ga</label>
+<label for="cat_join"><input type="radio" name="con" value="0" id="cat_join" />Salem, Mass</label>
+<label for="cat_info"><input type="radio" name="con" value="0" id="cat_info" />Austin, Tx</label>
+<label for="cat_condition"><input type="radio" name="con" value="0" id="cat_condition" />Portland, Ore</label>
+
+<h2>What is the least popular halloween candy?</h2>
+<label for="if_string"><input type="radio" name="ifstate" value="0" id="if_string" />Reeses</label>
+<label for="if_join"><input type="radio" name="ifstate" value="0" id="if_join" />Snickers</label>
+<label for="if_info"><input type="radio" name="ifstate" value="0" id="if_info" />Twix</label>
+<label for="if_condition"><input type="radio" name="ifstate"  value="25" id="if_condition" />Candy Corn</label>
+
+<button type="submit" value="Submit">Submit</button>
+
+</form>
+
+<p>Your grade is: <span id="grade">__</span></p>
+<p id="grade2"></p>
+</div><!-- close main div -->
+
+<script>
+document.getElementById("form1").onsubmit=function() {
+       variable = parseInt(document.querySelector('input[name = "variable"]:checked').value);
+	   sub = parseInt(document.querySelector('input[name = "sub"]:checked').value);
+	   con = parseInt(document.querySelector('input[name = "con"]:checked').value);
+	   ifstate = parseInt(document.querySelector('input[name = "ifstate"]:checked').value);
+
+
+	   result = variable + sub + con + ifstate;
+
+	document.getElementById("grade").innerHTML = result;
+
+	grading = [
+	   {score:0,feedback:"Don't make me flip my witch switch", image: "none.jpg"},
+	   {score:25,feedback:"You should believe a little more in the magic of Halloween", image: "poor.jpg"},
+	   {score:50,feedback:"You should trick or treat more", image: "avg.jpg"},
+	   {score:75,feedback:"Scary, but not scary enough", image: "above.jpg"},
+	   {score:100,feedback:"Excellent! You are a true Halloween nightmare!", image: "excellent.jpg"}
+	   ];
+
+for(i=0; i<grading.length; i++) {
+    if(result == grading[i].score) {
+    result2 = grading[i].feedback + "<br /><img src='" + grading[i].image + "' width='300'  />";
+	  }
+	  }
+
+document.getElementById("grade2").innerHTML = result2;
+
+
+
+return false; // required to not refresh the page; just leave this here
+} //this ends the submit function
+
+</script>
+</body>
+
+</html>
